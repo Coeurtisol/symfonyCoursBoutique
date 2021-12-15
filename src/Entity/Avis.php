@@ -36,6 +36,7 @@ class Avis
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="avis")
      * @ORM\JoinColumn(nullable=false)
+     * @ORM\Column(type="string", length=255)
      */
     private $auteur;
 
@@ -79,7 +80,7 @@ class Avis
 
         return $this;
     }
-
+  
     public function getAuteur(): ?User
     {
         return $this->auteur;
