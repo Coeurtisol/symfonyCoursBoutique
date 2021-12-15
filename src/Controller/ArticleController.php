@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Article;
 use App\Entity\Avis;
+use App\Form\ArticleType;
 use App\Form\AvisType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -25,6 +26,31 @@ class ArticleController extends AbstractController
             'controller_name' => 'ArticleController',
             'article' => $articles
         ]);
+    }
+
+    /**
+     * @Route("/article/add", name="article_add")
+     */
+    public function addArtcile(Request $request): Response
+    {
+        $article = new Article();
+        $form = $this->createForm(ArticleType::class, $article);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $article = $form->getData();
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($article);
+            $em->flush();
+
+            return $this->redirectToRoute("article_show", ['id' => $article->getId()]);
+        }
+
+        return $this->renderForm(
+            'article/add.html.twig',
+            ['form' => $form]
+        );
     }
 
     /**
