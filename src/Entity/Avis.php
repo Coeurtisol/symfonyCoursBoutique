@@ -34,9 +34,11 @@ class Avis
     private $article;
 
     /**
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="avis")
+     * @ORM\JoinColumn(nullable=false)
      * @ORM\Column(type="string", length=255)
      */
-    private $pseudo;
+    private $auteur;
 
     public function getId(): ?int
     {
@@ -78,15 +80,15 @@ class Avis
 
         return $this;
     }
-
-    public function getPseudo(): ?string
+  
+    public function getAuteur(): ?User
     {
-        return $this->pseudo;
+        return $this->auteur;
     }
 
-    public function setPseudo(string $pseudo): self
+    public function setAuteur(?User $auteur): self
     {
-        $this->pseudo = $pseudo;
+        $this->auteur = $auteur;
 
         return $this;
     }
