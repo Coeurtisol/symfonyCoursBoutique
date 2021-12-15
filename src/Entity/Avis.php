@@ -27,6 +27,12 @@ class Avis
      */
     private $note;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Article::class, inversedBy="avis")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $article;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -52,6 +58,18 @@ class Avis
     public function setNote(int $note): self
     {
         $this->note = $note;
+
+        return $this;
+    }
+
+    public function getArticle(): ?Article
+    {
+        return $this->article;
+    }
+
+    public function setArticle(?Article $article): self
+    {
+        $this->article = $article;
 
         return $this;
     }
