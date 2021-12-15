@@ -14,7 +14,7 @@ class AvisType extends AbstractType
         $builder
             ->add('contenu')
             ->add('note')
-            ->add('article')
+            ->add('envoyer', submit::class)
         ;
     }
 
