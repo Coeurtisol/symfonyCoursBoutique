@@ -1,27 +1,39 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ArticleController!{% endblock %}
+{% block title %}Article index{% endblock %}
 
 {% block body %}
-<style>
-    fieldset {    background-image: linear-gradient( #afcad6, #7ed8fa);
-    border-radius: 5px;
-    border: 3px solid #0e0e9f;}
-    legend {    color: #0d0da4;
-    font-family: cursive;
-    font-size: 20px;
-    text-transform: uppercase;}
-    .contenuArticle {    font-family: cursive;  
-    color: white;
-    font-size: 15px;
-    text-align: center;
-}
-</style> 
+    <h1>Article index</h1>
 
-<fieldset>
-<legend>Titre de l'article</legend>
-<div class="contenuArticle">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam dictum nisl vitae nisi elementum dignissim. Quisque luctus odio et mi egestas, non malesuada neque consectetur. Fusce tincidunt orci at diam euismod hendrerit. Curabitur faucibus ex a diam dignissim varius. Nullam posuere pretium orci, vel sodales tortor. Nullam magna orci, molestie quis elementum nec, posuere id diam. Suspendisse finibus ipsum ut nisl venenatis posuere sed nec erat. Vivamus rhoncus magna elementum ipsum tincidunt blandit. Pellentesque lobortis enim eget orci luctus volutpat. Morbi scelerisque, nisi eu mattis sagittis, arcu sapien convallis libero, eu pharetra neque est sit amet libero. Aenean sed gravida augue. In hac habitasse platea dictumst. Aenean nulla arcu, sodales at sodales in, varius sed nibh. In nec dapibus ligula, non bibendum dui. Ut nec ipsum quis orci venenatis laoreet at eget neque.
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Prix</th>
+                <th>Description</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for article in articles %}
+            <tr>
+                <td>{{ article.id }}</td>
+                <td>{{ article.nom }}</td>
+                <td>{{ article.prix }}</td>
+                <td>{{ article.description }}</td>
+                <td>
+                    <a href="{{ path('article_show', {'id': article.id}) }}">show</a>
+                    <a href="{{ path('article_edit', {'id': article.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 
-Suspendisse potenti. Curabitur consequat odio nisl, eget pellentesque dui laoreet quis. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras scelerisque magna porta leo pretium pretium. Vestibulum euismod volutpat diam eu egestas. Aenean dignissim lectus felis, at dapibus elit sollicitudin nec. Morbi vulputate at tortor id consectetur. Phasellus tempus ex libero, a ullamcorper nibh tincidunt a. Sed purus libero, volutpat ut sagittis ut, iaculis sit amet enim. In vehicula porta nulla sed vulputate. Curabitur faucibus sapien et vehicula scelerisque. Suspendisse mattis enim ante, semper hendrerit nunc pretium condimentum.</div>
-</fieldset>
+    <a href="{{ path('article_new') }}">Create new</a>
 {% endblock %}
