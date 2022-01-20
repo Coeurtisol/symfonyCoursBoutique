@@ -36,6 +36,12 @@ class ArticleController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            $file = $form['image']->getData();
+            $file->move($this->getParameter('article_image'),$file->getClientOriginalName());
+
+            $article->setImage($file->getClientOriginalName());
+
             $entityManager->persist($article);
             $entityManager->flush();
 
