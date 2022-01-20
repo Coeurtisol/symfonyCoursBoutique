@@ -17,14 +17,14 @@
     <body>
     	{% block nav %}
 			<nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-between">
-				<span class="navbar-brand mb-0 h1">Blog</span>
+				<span class="navbar-brand mb-0 h1">E-commerce</span>
 				<div class="collapse navbar-collapse" id="navbarNav">
 					<ul class="navbar-nav">
 						<li class="nav-item">
-							<a class="nav-link" >Blog</a>
+							<a class="nav-link" href="{{path('accueil')}}">Acceuil</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" >Commentaire</a>
+							<a class="nav-link" >Categories</a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link" href="{{path('article_add')}}">Ajouter un article</a>
