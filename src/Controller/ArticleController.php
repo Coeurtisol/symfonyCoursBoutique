@@ -14,7 +14,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class ArticleController extends AbstractController
 {
     /**
-     * @Route("/article", name="article")
+     * @Route("/", name="accueil")
      */
     public function index(): Response
     {
@@ -22,7 +22,7 @@ class ArticleController extends AbstractController
             ->getRepository(Article::class)
             ->findAll();
 
-        return $this->render('article/index.html.twig', [
+        return $this->render('index.html.twig', [
             'controller_name' => 'ArticleController',
             'article' => $articles
         ]);
