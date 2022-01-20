@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\Article;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class ArticleType extends AbstractType
@@ -15,8 +16,8 @@ class ArticleType extends AbstractType
             ->add('nom')
             ->add('prix')
             ->add('description')
-            ->add('categories')
-            ->add('envoyer', sumbit::class)
+            // ->add('categories')
+            ->add('envoyer', SubmitType::class)
         ;
     }
 
