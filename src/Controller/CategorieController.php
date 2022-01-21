@@ -21,8 +21,11 @@ class CategorieController extends AbstractController
      */
     public function index(CategorieRepository $categorieRepository): Response
     {
+        $categories = $categorieRepository->findAll();
+        // $categories = $this->getDoctrine()->getRepository(Categorie::class)->findAll();
+        // dd($categories);
         return $this->render('categorie/index.html.twig', [
-            'categories' => $categorieRepository->findAll(),
+            'categories' => $categories,
         ]);
     }
 

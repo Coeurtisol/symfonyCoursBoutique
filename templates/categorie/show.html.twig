@@ -3,7 +3,34 @@
 {% block title %}Categorie{% endblock %}
 
 {% block body %}
-    <h1>Categorie</h1>
+
+        <style>
+            fieldset{
+                border: 1px solid black;
+            }
+            a.no-style{
+                text-decoration:none;
+                color : black;
+            }
+        </style>
+
+        <div class="container">
+            <fieldset class="d-flex p-3">
+                <legend>{{ categorie.nom }}</legend>
+                {% for article in categorie.articles %}
+                    <a href="{{ path('article_show', {'id': article.id}) }}" class="card mr-3 no-style" style="width: 18rem;">
+                        <img class="card-img-top" src="..." alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ article.nom }}</h5>
+                            <p class="card-text">{{article.description}}</p>
+                            <p class="card-text">{{article.prix}}</p>
+                        </div>
+                    </a>
+                {% endfor %}
+            </fieldset>
+        </div>
+
+    {# <h1>Categorie</h1>
 
     <table class="table">
         <tbody>
@@ -22,5 +49,5 @@
 
     <a href="{{ path('categorie_edit', {'id': categorie.id}) }}">edit</a>
 
-    {{ include('categorie/_delete_form.html.twig') }}
+    {{ include('categorie/_delete_form.html.twig') }} #}
 {% endblock %}
