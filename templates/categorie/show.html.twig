@@ -19,7 +19,7 @@
                 <legend>{{ categorie.nom }}</legend>
                 {% for article in categorie.articles %}
                     <a href="{{ path('article_show', {'id': article.id}) }}" class="card mr-3 no-style" style="width: 18rem;">
-                        <img class="card-img-top" src="..." alt="Card image cap">
+                        <img class="card-img-top" src="{{ asset("image/article/"~ article.image)}}" alt="Card image cap">
                         <div class="card-body">
                             <h5 class="card-title">{{ article.nom }}</h5>
                             <p class="card-text">{{article.description}}</p>

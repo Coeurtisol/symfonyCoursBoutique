@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Article;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -17,7 +18,7 @@ class ArticleType extends AbstractType
             ->add('nom')
             ->add('prix')
             ->add('description')
-            // ->add('categories')
+            ->add('categories')
             ->add('image', FileType::class)
             ->add('envoyer', SubmitType::class)
         ;
