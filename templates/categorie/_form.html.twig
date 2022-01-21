@@ -1,4 +1,14 @@
-{{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
-{{ form_end(form) }}
+{{form_start(form)}}
+
+<div class="row">
+	<div class="form-group">
+		{{ form_widget(form.nom, {'attr':{'class':'form-control','placeholder':'Nom de la catégorie'}}) }}
+		<small>{{ form_help(form.nom) }}</small>
+		<div class="form-error">
+			{{ form_errors(form.nom) }}
+		</div>
+		{{ form_widget(form.Envoyer, {'attr':{'class':'btn btn-primary btn-sm my-3'}}) }}
+	</div>
+</div>
+
+{{form_end(form)}}
