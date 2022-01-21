@@ -1,34 +1,65 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Article{% endblock %}
+{% block title %}Article
+{% endblock %}
 
 {% block body %}
-    <h1>Article</h1>
+	<style>
+		h1 {
+          text-align: center; margin: 0px auto; display: block;
+          margin: 50px auto;
+        }
+		.imgArticle {
+			width: 500px;
+			height: 500px;
+		}
+		.section {
+			margin: auto 50px;
+			display: flex;
+			justify-content: space-between;
+		}
+		.section2 {
+			display: flex;
+			justify-content: center;
+		}
+		.section2 a {
+			margin: 20px;
+		}
+	</style>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ article.id }}</td>
-            </tr>
-            <tr>
-                <th>Nom</th>
-                <td>{{ article.nom }}</td>
-            </tr>
-            <tr>
-                <th>Prix</th>
-                <td>{{ article.prix }}</td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>{{ article.description }}</td>
-            </tr>
-        </tbody>
-    </table>
+	<h1>{{ article.nom }}</h1>
+	<div class="section">
+		<img class="imgArticle" src="{{ asset("image/article/"~ article.image)}}" alt="Card image cap">
 
-    <a href="{{ path('article_index') }}">back to list</a>
+		<table class="table col-6">
+			<tbody>
+				<tr>
+					<th>Id</th>
+					<td>{{ article.id }}</td>
+				</tr>
+				<tr>
+					<th>Nom</th>
+					<td>{{ article.nom }}</td>
+				</tr>
+				<tr>
+					<th>Prix</th>
+					<td>{{ article.prix }} €</td>
+				</tr>
+				<tr>
+					<th>Description</th>
+					<td>{{ article.description }}</td>
+				</tr>
 
-    <a href="{{ path('article_edit', {'id': article.id}) }}">edit</a>
+			</tbody>
+		</table>
+	</div>
+	<div class="section2">
+		<a class="btn btn-success" href="{{('panier')}}">Ajouter au panier</a>
 
-    {{ include('article/_delete_form.html.twig') }}
+		<a class="btn btn-secondary" href="{{ path('article_index') }}">back to list</a>
+
+		<a class="btn btn-warning" href="{{ path('article_edit', {'id': article.id}) }}">edit</a>
+
+		<a>{{ include('article/_delete_form.html.twig')}}</a>
+	</div>
 {% endblock %}
