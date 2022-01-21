@@ -1,66 +1,22 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Categorie index{% endblock %}
+{% block title %}Categorie index
+{% endblock %}
 
 {% block body %}
-
-        <style>
-            fieldset{
-                border: 1px solid black;
-            }
-            a.no-style{
-                text-decoration:none;
-                color : black;
-            }
-        </style>
-
-        <div class="container">
-            {% for categorie in categories %}
-                <a href="{{ path('categorie_show', {'id': categorie.id}) }}" class="no-style">
-                    <fieldset class="d-flex p-3">
-                        <legend>{{ categorie.nom }}</legend>
-                        {% for article in categorie.articles %}
-                            <a href="{{ path('article_show', {'id': article.id}) }}" class="card mr-3 no-style" style="width: 18rem;">
-                                <img class="card-img-top" src="..." alt="Card image cap">
-                                <div class="card-body">
-                                    <h5 class="card-title">{{ article.nom }}</h5>
-                                    <p class="card-text">{{article.description}}</p>
-                                    <p class="card-text">{{article.prix}}</p>
-                                </div>
-                            </a>
-                        {% endfor %}
-                    </fieldset>
-                </a>
-            {% endfor %}
-        </div>
-    
-    {# <h1>Categorie index</h1>
-
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Nom</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for categorie in categories %}
-            <tr>
-                <td>{{ categorie.id }}</td>
-                <td>{{ categorie.nom }}</td>
-                <td>
-                    <a href="{{ path('categorie_show', {'id': categorie.id}) }}">show</a>
-                    <a href="{{ path('categorie_edit', {'id': categorie.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="3">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <a href="{{ path('categorie_new') }}">Create new</a> #}
+	<div class="container">
+		<div class="d-flex justify-content-between flex-wrap mt-5">
+			{% for categorie in categories %}
+				<a href="{{ path('categorie_show', {'id': categorie.id}) }}" class="no-style">
+					<div class="card" style="width: 18rem;">
+						{# <img src="{{ asset("image/article/"~ categorie.image)}}" class="card-img-top" alt="..."> #}
+						<img src="..." class="card-img-top" alt="...">
+						<div class="card-body">
+							<p class="card-text">{{ categorie.nom }}</p>
+						</div>
+					</div>
+				</a>
+			{% endfor %}
+		</div>
+	</div>
 {% endblock %}
